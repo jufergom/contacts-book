@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Contact } from './shared/contact';
+import { Mock } from './shared/mock';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'contacts-book';
+  
+  contactsList: Contact[] = [];
+  Title: string = "Contact List";
+
+  ngOnInit(): void {
+    this.contactsList = Mock;
+  }
+
 }

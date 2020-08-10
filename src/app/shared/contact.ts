@@ -1,2 +1,6 @@
-export class Contact {
+export interface Contact {
+    name: string;
+    email: string;
+    phone: number;
+    type: string;
 }
