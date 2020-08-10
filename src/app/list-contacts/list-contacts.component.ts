@@ -27,4 +27,8 @@ export class ListContactsComponent implements OnInit {
   closeInfo(): void {
     this.selectedContact = null;
   }
+
+  deleteContact():void{
+    
+  }
 }
