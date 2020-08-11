@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Types } from '../shared/mock';
+import { Contact } from '../shared/contact';
 
 @Component({
   selector: 'app-add-contact',
@@ -7,6 +8,8 @@ import { Types } from '../shared/mock';
   styleUrls: ['./add-contact.component.css']
 })
 export class AddContactComponent implements OnInit {
+
+  @Input() contactsList: Contact[];
 
   isVisible: boolean = false; 
   messageAdd: string = "Añadir Contacto";
@@ -19,14 +22,25 @@ export class AddContactComponent implements OnInit {
 
   types: string [] = Types;
 
-  constructor() { }
+  inputContact: Contact;
+
+  constructor() {
+    this.inputContact = new Contact("", "", null, "");
+   }
 
   ngOnInit(): void {
   }
 
-  showForm():void {
+  showForm(): void {
     this.isVisible = !this.isVisible;
     this.message = this.message == this.messageAdd ? this.messageCancel : this.messageAdd;
     this.buttonClass = this.buttonClass == this.buttonClassClosed ? this.buttonClassOpen : this.buttonClassClosed;
+  }
+
+  onSubmit(form): void {
+    this.contactsList.push(new Contact(this.inputContact.name, this.inputContact.email, 
+      this.inputContact.phone, this.inputContact.type));
+    form.reset();
+    this.showForm();
   }
 }

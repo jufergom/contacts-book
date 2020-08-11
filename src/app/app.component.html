@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="card-title text-center text-white bg-dark mt-2 mb-2">{{Title}}</h1>
   <app-filter></app-filter>
-  <app-add-contact></app-add-contact>
+  <app-add-contact [contactsList]="contactsList"></app-add-contact>
   <app-list-contacts [contactsList]="contactsList"></app-list-contacts>
 </div>

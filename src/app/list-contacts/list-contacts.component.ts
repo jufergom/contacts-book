@@ -24,11 +24,15 @@ export class ListContactsComponent implements OnInit {
     this.selectedContact = contact;
   }
 
+  editContact(): void {
+    
+  }
+
   closeInfo(): void {
     this.selectedContact = null;
   }
 
-  deleteContact():void{
-    
+  deleteContact(): void{
+    this.contactsList = this.contactsList.filter(x => x != this.selectedContact);
   }
 }
