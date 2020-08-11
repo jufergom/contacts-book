@@ -21,11 +21,22 @@ export class ListContactsComponent implements OnInit {
   }
 
   showContactInfo(contact: Contact): void{
-    this.selectedContact = contact;
+    this.selectedContact = contact
   }
 
   editContact(): void {
-    
+    let editedContacts = this.contactsList;
+    editedContacts = this.contactsList.map(contact => {
+      if(contact.id === this.selectedContact.id) {
+        contact.name = this.selectedContact.name;
+        contact.email = this.selectedContact.email;
+        contact.phone = this.selectedContact.phone;
+        contact.type = this.selectedContact.type;
+      }
+      return contact;
+    });
+    this.contactsList = editedContacts;
+    this.closeInfo();
   }
 
   closeInfo(): void {

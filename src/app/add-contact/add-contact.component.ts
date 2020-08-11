@@ -25,7 +25,7 @@ export class AddContactComponent implements OnInit {
   inputContact: Contact;
 
   constructor() {
-    this.inputContact = new Contact("", "", null, "");
+    this.inputContact = new Contact(0, "", "", null, "");
    }
 
   ngOnInit(): void {
@@ -38,7 +38,8 @@ export class AddContactComponent implements OnInit {
   }
 
   onSubmit(form): void {
-    this.contactsList.push(new Contact(this.inputContact.name, this.inputContact.email, 
+    let index: number = this.contactsList[this.contactsList.length - 1].id + 1 || 0;
+    this.contactsList.push(new Contact(0, this.inputContact.name, this.inputContact.email, 
       this.inputContact.phone, this.inputContact.type));
     form.reset();
     this.showForm();
