@@ -45,5 +45,6 @@ export class ListContactsComponent implements OnInit {
 
   deleteContact(): void{
     this.contactsList = this.contactsList.filter(x => x != this.selectedContact);
+    this.closeInfo();
   }
 }
