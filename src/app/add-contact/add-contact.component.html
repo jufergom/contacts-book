@@ -5,7 +5,7 @@
 </div>
 <div *ngIf="isVisible" class="card mb-2 mt-2">
     <div class="card-body">
-        <form (ngSubmit)="onSubmit(form);" #form="ngForm">
+        <form>
             <div class="form-group">
                 <label for="name" >Nombre</label>
                 <input type="text" #name="ngModel" name="name" class="form-control" required minlength="3" [(ngModel)]="inputContact.name">
@@ -36,7 +36,7 @@
                </select> 
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-success mt-2 form-control" [disabled]="!name.valid || !phone.valid || !email.valid" >Agregar</button>
+                <button type="button" (click)="onSubmit(inputContact)" class="btn btn-success mt-2 form-control" [disabled]="!name.valid || !phone.valid || !email.valid" >Agregar</button>
             </div>
         </form>
     </div>

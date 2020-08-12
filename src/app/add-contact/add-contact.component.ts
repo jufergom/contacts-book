@@ -38,9 +38,8 @@ export class AddContactComponent implements OnInit {
     this.buttonClass = this.buttonClass == this.buttonClassClosed ? this.buttonClassOpen : this.buttonClassClosed;
   }
 
-  onSubmit(form): void {
-    this.contactsList.push(new Contact(this.inputContact.name, this.inputContact.email,this.inputContact.phone, this.inputContact.type));
-    form.reset();
+  onSubmit(contact : Contact): void {
+    this.contactsList.push(contact);
     this.showForm();
   }
 }
