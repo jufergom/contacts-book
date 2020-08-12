@@ -24,15 +24,24 @@
         <form>
             <div class="form-group">
                 <label for="name" >Nombre</label>
-                <input type="text" class="form-control" name="name" required minlength="3" [(ngModel)]="selectedContact.name">
+                <input type="text" class="form-control" name="name" required minlength="3" #name="ngModel" [(ngModel)]="selectedContact.name">
+                <div *ngIf="!name.valid" class="alert alert-danger mt-2">
+                    Nombre minimo de 3 caracteres
+                </div>
             </div>
             <div class="form-group">
                 <label for="number">Numero</label>
-                <input type="number" class="form-control" name="phone" required [(ngModel)]="selectedContact.phone">
+                <input type="number" class="form-control" name="phone" required #phone="ngModel" [(ngModel)]="selectedContact.phone">
+                <div *ngIf="!phone.valid" class="alert alert-danger mt-2">
+                    Numero Invalido
+                </div>
             </div>
             <div class="form-group">
                 <label for="email">Correo</label>
-                <input type="email" class="form-control" name="email" required [(ngModel)]="selectedContact.email">
+                <input type="email" class="form-control" name="email" email required #email="ngModel" [(ngModel)]="selectedContact.email">
+                <div *ngIf="!email.valid" class="alert alert-danger mt-2">
+                    Escriba un correo valido
+                </div>
             </div>
             <div class="form-group">
                <label for="type">Titulo</label>
@@ -41,7 +50,7 @@
                </select> 
             </div>
             <div class="form-group">
-                <button type="button" class="btn btn-info mr-2" (click)="closeInfo()">Cerrar</button>
+                <button type="button" class="btn btn-info mr-2" (click)="closeInfo()" [disabled]="!name.valid || !phone.valid || !email.valid">Cerrar</button>
                 <button type="button" class="btn btn-danger" (click)="deleteContact()">Borrar</button>
             </div>
         </form>
