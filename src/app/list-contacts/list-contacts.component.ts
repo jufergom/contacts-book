@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Contact } from '../shared/contact';
 import { Types } from '../shared/mock';
 
@@ -10,6 +10,8 @@ import { Types } from '../shared/mock';
 export class ListContactsComponent implements OnInit {
 
   @Input() contactsList: Contact[];
+
+  @Output() deletedContactEvent = new EventEmitter<Contact>();
 
   selectedContact: Contact;
 
@@ -29,7 +31,7 @@ export class ListContactsComponent implements OnInit {
   }
 
   deleteContact(): void{
-    this.contactsList = this.contactsList.filter(x => x != this.selectedContact);
+    this.deletedContactEvent.emit(this.selectedContact);
     this.closeInfo();
   }
 }

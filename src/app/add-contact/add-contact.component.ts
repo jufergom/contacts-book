@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Types } from '../shared/mock';
 import { Contact } from '../shared/contact';
 
@@ -9,7 +9,7 @@ import { Contact } from '../shared/contact';
 })
 export class AddContactComponent implements OnInit {
 
-  @Input() contactsList: Contact[]; // esto cambiarlo a un output y mandarselo al list-contact
+  @Output() newItemEvent = new EventEmitter<Contact>();
 
   isVisible: boolean = false; 
   messageAdd: string = "Añadir Contacto";
@@ -39,7 +39,7 @@ export class AddContactComponent implements OnInit {
   }
 
   onSubmit(contact : Contact): void {
-    this.contactsList.push(contact);
+    this.newItemEvent.emit(contact);
     this.showForm();
   }
 }

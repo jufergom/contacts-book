@@ -16,4 +16,13 @@ export class AppComponent {
     this.contactsList = Mock;
   }
 
+  addItem(newContact: Contact): void {
+    this.contactsList.push(newContact);
+  }
+
+  deleteItem(deletedContact: Contact): void{
+    this.contactsList = this.contactsList.filter(contact => contact != deletedContact);
+    console.log(this.contactsList);
+  }
+
 }
